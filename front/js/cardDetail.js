@@ -1,8 +1,13 @@
 let tasks
 // const { io } = require('./server');
-// const socket = io();
-const socket = require("socket.io");
+const socket = io();
+//const socket = require("socket.io");
 
+// Escuchar mensajes del servidor y mostrarlos en la lista
+socket.on('mensaje', (mensaje) => {
+  const mensajeDiv = document.getElementById('mensajeDiv');
+  mensajeDiv.textContent = mensaje;
+});
 
 // Funciones asincronas 
 async function getProjectById(id) {

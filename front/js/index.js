@@ -3,7 +3,7 @@ let projects = [];
 //const { io } = require('./server');
 //const socket = io(window.location.origin);
 const socket = io();
-
+//const socket = require("socket.io");
 
 // Escuchar mensajes del servidor y mostrarlos en la lista
 socket.on('mensaje', (mensaje) => {

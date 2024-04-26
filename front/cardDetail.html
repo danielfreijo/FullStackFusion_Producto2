@@ -45,7 +45,13 @@
             </div>
         </div>
     </nav>
-    <ul id="mensajes"></ul>
+
+    <!-- Mostrar alertas -->
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Alerta:</strong> <div name="mensajeDiv" id="mensajeDiv"></div>
+    </div>
+    
     <!-- Modal de agregar tarea -->
     <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
         <div class="modal-dialog">
