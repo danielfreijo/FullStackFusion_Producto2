@@ -1,5 +1,8 @@
 let tasks
-const socket = io("http://localhost:4000");
+// const { io } = require('./server');
+// const socket = io();
+const socket = require("socket.io");
+
 
 // Funciones asincronas 
 async function getProjectById(id) {
@@ -766,7 +769,7 @@ $(document).ready(async function () {
             const updatedTasks = await getTasksByProjectId(projectId);
             showTasksCards(updatedTasks);
             $("#confirmationModal").modal("hide");  
-            socket.emit('mensaje', "Tarjeta eliminada");
+            socket.emit('mensaje', "Tarjeta eliminada_____________....");
           }
         } catch (error) {
           console.error("Error en la solicitud:", error);

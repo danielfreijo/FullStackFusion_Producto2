@@ -1,5 +1,18 @@
 let projects = [];
 
+//const { io } = require('./server');
+//const socket = io(window.location.origin);
+const socket = io();
+
+
+// Escuchar mensajes del servidor y mostrarlos en la lista
+socket.on('mensaje', (mensaje) => {
+  const listaMensajes = document.getElementById('mensajes');
+  const nuevoMensaje = document.createElement('li');
+  nuevoMensaje.textContent = mensaje;
+  listaMensajes.appendChild(nuevoMensaje);
+});
+
 // 1. Definiciones de Funciones Asíncronas para interactuar con la API
 async function getProjects() {
   const response = await fetch('/api', {
@@ -429,6 +442,5 @@ $(document).ready(async function() {
   });
 
 });
-
 
 
