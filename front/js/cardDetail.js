@@ -1,12 +1,45 @@
 let tasks
-// const { io } = require('./server');
 const socket = io();
-//const socket = require("socket.io");
 
 // Escuchar mensajes del servidor y mostrarlos en la lista
 socket.on('mensaje', (mensaje) => {
-  const mensajeDiv = document.getElementById('mensajeDiv');
+  // Borramos lo que contenga el container de las alertas
+  const container_borrar = document.getElementById('container');
+  container_borrar.innerHTML = '';
+
+  const alertDiv = document.createElement('div');
+  alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+  
+  // Botón de cierre
+  const closeButton = document.createElement('button');
+  closeButton.setAttribute('type', 'button');
+  closeButton.classList.add('btn-close');
+  closeButton.setAttribute('data-bs-dismiss', 'alert');
+  
+  // Contenido de la tarjeta de alerta
+  const strongTag = document.createElement('strong');
+  strongTag.textContent = 'Alerta:';
+  
+  // Div para el mensaje
+  const mensajeDiv = document.createElement('div');
+  mensajeDiv.setAttribute('name', 'mensajeDiv');
+  mensajeDiv.setAttribute('id', 'mensajeDiv');
+  
+  // Agregar el contenido al mensajeDiv
   mensajeDiv.textContent = mensaje;
+  
+  // Agregar el botón de cierre a la tarjeta de alerta
+  alertDiv.appendChild(closeButton);
+  
+  // Agregar el texto fuerte y el mensajeDiv a la tarjeta de alerta
+  alertDiv.appendChild(strongTag);
+  alertDiv.appendChild(mensajeDiv);
+  
+  // Obtener el contenedor donde se agregará la tarjeta de alerta
+  const container = document.getElementById('container');
+  
+  // Agregar la tarjeta de alerta al contenedor
+  container.appendChild(alertDiv);
 });
 
 // Funciones asincronas 
