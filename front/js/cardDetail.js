@@ -1,5 +1,19 @@
 let tasks
 
+// Importar Socket.io
+const socket = io();
+
+// Función para enviar un mensaje al servidor
+function enviarMensaje(mensaje) {
+    socket.emit('mensaje', mensaje);
+}
+
+// Escuchar mensajes del servidor y mostrarlos en la lista
+socket.on('mensaje', (mensaje) => {
+    // Aquí puedes manejar la lógica para mostrar el mensaje en la interfaz
+    console.log('Mensaje recibido:', mensaje);
+});
+
 // Funciones asincronas 
 async function getProjectById(id) {
   const query = `
